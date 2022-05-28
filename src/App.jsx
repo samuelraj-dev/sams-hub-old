@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import './App.css'
 
-const BACKEND = process.env.BACKEND || 'https://sams-hub.herokuapp.com/'
+const BACKEND = process.env.BACKEND || 'http://localhost:5000/friend'
 
 const App = () => {
 
@@ -12,7 +12,7 @@ const App = () => {
     const [friendList, setFriendList] = useState([])
 
     const addFriend = () => {
-        axios.post(`${BACKEND}addfriend`, {
+        axios.post(`${BACKEND}`, {
             name: name,
             age: age,
         })
@@ -25,7 +25,7 @@ const App = () => {
     const updateFriend = (id) => {
         const newAge = prompt('Enter new age: ')
 
-        axios.put(`${BACKEND}updatefriend`, { id: id, newAge: newAge})
+        axios.put(`${BACKEND}`, { id: id, newAge: newAge})
             .then(() => {
                 setFriendList(friendList.map((data) => {
                     if (data._id === id) {
@@ -39,7 +39,7 @@ const App = () => {
     }
 
     const deleteFriend = (id) => {
-        axios.delete(`${BACKEND}deletefriend/${id}`)
+        axios.delete(`${BACKEND}${id}`)
             .then(() => {
                 setFriendList(friendList.filter((data) => {
                     return data._id !== id
@@ -48,7 +48,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        axios(`${BACKEND}readfriend`)
+        axios(`${BACKEND}`)
             .then((data) => {
                 setFriendList(data.data)
             })
