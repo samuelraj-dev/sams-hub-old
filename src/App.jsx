@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import './App.css'
 
-const BACKEND = process.env.BACKEND || 'https://sams-hub.herokuapp.com/friend/'
+const BACKEND = process.env.BACKEND || 'https://sams-hub.herokuapp.com/friend'
 
 const App = () => {
 
@@ -39,7 +39,7 @@ const App = () => {
     }
 
     const deleteFriend = (id) => {
-        axios.delete(`${BACKEND}:${id}`)
+        axios.delete(`${BACKEND}/${id}`)
             .then(() => {
                 setFriendList(friendList.filter((data) => {
                     return data._id !== id
