@@ -39,7 +39,7 @@ const App = () => {
     }
 
     const deleteFriend = (id) => {
-        axios.delete(`${BACKEND}${id}`)
+        axios.delete(`${BACKEND}:${id}`)
             .then(() => {
                 setFriendList(friendList.filter((data) => {
                     return data._id !== id
