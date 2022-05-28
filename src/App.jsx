@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import './App.css'
 
-const BACKEND = process.env.BACKEND || 'https://sams-hub.herokuapp.com/friend'
+const BACKEND = process.env.BACKEND || 'http://localhost:5000/friend'
 
 const App = () => {
 
